@@ -1,0 +1,30 @@
+<h1>Listing things</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Count</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @things.each do |thing| %>
+      <tr>
+        <td><%= thing.name %></td>
+        <td><%= thing.events_count %></td>
+        <td><%= link_to 'Show', thing %></td>
+        <td><%= link_to 'Edit', edit_thing_path(thing) %></td>
+        <td><%= link_to 'Destroy', thing, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <td><%= link_to 'Log Event', addevent_thing_path(thing), method: :post %></td>
+        <td><%= link_to 'Share', new_invitation_path(thing), method: :post %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<p><%= link_to 'New Thing', new_thing_path %></p>
+<p><%= link_to 'Logout', destroy_user_session_path, method: :delete %></p>

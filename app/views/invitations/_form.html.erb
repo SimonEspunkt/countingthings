@@ -1,0 +1,4 @@
+<%= simple_form_for @invitation, :url => url_for(controller: 'invitations', action: 'create') do |f| %>
+  <%= f.input :recipient_email %>
+  <%= f.button :submit %>
+<% end %>
