@@ -13,10 +13,10 @@
     <% @things.each do |thing| %>
       <tr>
         <td><%= thing.name %></td>
-        <td><%= thing.events_count %></td>
+        <td><%= unless thing.events_count.nil? then thing.events_count else 0 end %></td>
         <td><%= link_to 'Show', thing %></td>
-        <td><%= link_to 'Edit', edit_thing_path(thing) %></td>
-        <td><%= link_to 'Destroy', thing, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <td><%= if current_user.id == thing.owner_id then link_to 'Edit', edit_thing_path(thing) end %></td>
+        <td><%= if current_user.id == thing.owner_id then link_to 'Destroy', thing, method: :delete, data: { confirm: 'Are you sure?' } end %></td>
         <td><%= link_to 'Log Event', addevent_thing_path(thing), method: :post %></td>
         <td><%= link_to 'Share', new_invitation_path(thing), method: :post %></td>
       </tr>

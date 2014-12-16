@@ -6,12 +6,20 @@ class ThingPolicy < ApplicationPolicy
 		@thing = thing
 	end
 
-	def owner?
+	def user_is_owner?
 		user.id == @thing.owner_id
 	end
 
+	def edit?
+		update?
+	end
+
+	def update?
+		user.admin? or user_is_owner?
+	end
+
 	def destroy?
-		user.admin? or owner?
+		user.admin? or user_is_owner?
 	end
 
   class Scope < Scope

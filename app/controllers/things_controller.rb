@@ -47,6 +47,7 @@ class ThingsController < ApplicationController
   # PATCH/PUT /things/1
   # PATCH/PUT /things/1.json
   def update
+    authorize @thing
     respond_to do |format|
       if @thing.update(thing_params)
         format.html { redirect_to things_path, notice: 'Thing was successfully updated.' }
@@ -69,8 +70,8 @@ class ThingsController < ApplicationController
     end
   end
 
-  # POST /things/addevent
-  # POST /things/addevent.json
+  # POST /things/1/addevent
+  # POST /things/1/addevent.json
   def addevent
     @thing = current_user.things.where(id: params[:id]).first
     @event = @thing.events.new(user_id: current_user.id)
