@@ -3,7 +3,6 @@ class InvitationsController < ApplicationController
   #TODO: DELETE THIS METHOD!!!
   def index
     @invitations = Invitation.all
-    render plain: @invitations.inspect
   end 
 
 
