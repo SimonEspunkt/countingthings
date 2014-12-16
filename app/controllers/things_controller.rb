@@ -1,5 +1,5 @@
 class ThingsController < ApplicationController
-  before_action :authenticate_user!
+  before_filter :authenticate_user!
   before_action :set_thing, only: [:show, :edit, :update, :destroy]
 
   # GET /things
@@ -31,6 +31,7 @@ class ThingsController < ApplicationController
   # POST /things.json
   def create
     @thing = current_user.things.build(thing_params)
+    @thing.owner_id = current_user.id
 
     respond_to do |format|
       if current_user.things << @thing
@@ -60,6 +61,7 @@ class ThingsController < ApplicationController
   # DELETE /things/1
   # DELETE /things/1.json
   def destroy
+    authorize @thing
     @thing.destroy
     respond_to do |format|
       format.html { redirect_to things_url, notice: 'Thing was successfully destroyed.' }

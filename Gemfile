@@ -42,3 +42,4 @@ gem 'spring',        group: :development
 gem 'devise', '~> 3.1.0.rc'
 gem 'simple_form'
 gem 'foundation-rails'
+gem 'pundit'
