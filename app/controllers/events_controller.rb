@@ -13,6 +13,11 @@ class EventsController < ApplicationController
 	      format.html { redirect_to things_url, notice: 'Event successfully destroyed.' }
 	      format.json { head :no_content }
 	    end
+	  else
+	  	respond_to do |format|
+	      format.html { redirect_to things_url, notice: 'No event to destroy found.' }
+	      format.json { head :no_content }
+	    end
   	end
   end
 
