@@ -7,14 +7,13 @@ Rails.application.routes.draw do
   post 'things/:id/invite/' => 'invitations#new', as: :new_invitation
   post 'things/:id/invite/create' => 'invitations#create'
   get  'vi/:code' => 'invitations#validateInvitation', as: :validate_invitation
- 
+  delete 'things/:thing_id/events/destroy' => 'events#destroy', as: :thing_event
   
 
   resources :things do
-    member do
-      post 'addevent'
-    end
+    resources :events, only: [:create]
   end
+
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

@@ -70,24 +70,6 @@ class ThingsController < ApplicationController
     end
   end
 
-  # POST /things/1/addevent
-  # POST /things/1/addevent.json
-  def addevent
-    @thing = current_user.things.where(id: params[:id]).first
-    @event = @thing.events.new(user_id: current_user.id)
-
-    respond_to do |format|
-      if @thing.events << @event
-        format.html { redirect_to things_path, notice: 'Event successfully logged.' }
-        format.json { render :show, status: :created, location: @thing }
-      else
-        format.html { render :new }
-        format.json { render json: @thing.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_thing
