@@ -1,0 +1,30 @@
+<h1>Listing things</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Count</th>
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @things.each do |thing| %>
+      <tr>
+        <td><%= thing.name %></td>
+        <td><%= unless thing.events_count.nil? then thing.events_count else 0 end %></td>
+        <td><%= link_to 'Show', thing %></td>
+        <td><%= if current_user.id == thing.owner_id then link_to 'Edit', edit_thing_path(thing) end %></td>
+        <td><%= if current_user.id == thing.owner_id then link_to 'Destroy', thing, method: :delete, data: { confirm: 'Are you sure?' } end %></td>
+        <td><%= link_to 'Log Event', thing_events_path(thing), method: :post %></td>
+        <td><%= link_to 'Destroy Event', thing_event_path(thing), method: :delete %></td>
+        <td><%= link_to 'Share', new_invitation_path(thing), method: :post %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<p><%= link_to 'New Thing', new_thing_path %></p>

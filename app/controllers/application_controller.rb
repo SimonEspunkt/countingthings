@@ -7,15 +7,11 @@ class ApplicationController < ActionController::Base
 
   protected    
 
-    def after_resending_confirmation_instructions_path_for(resource_name)
-      is_navigational_format? ? root_path : '/'
-    end
-
     def authenticate_user!
       if user_signed_in?
         super
       else
-        flash[:alert] = "Du bist momentan nicht angemeldet!"
+        flash[:alert] = "Du bist noch nicht angemeldet! Bitte logge dich unten ein!"
         redirect_to root_path
       end
     end
