@@ -3,7 +3,7 @@
     %ul.title-area
       %li.name
         %h1
-          %a{:href => "#"} My Site
+          = link_to 'countingthings.io', things_path
       / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
       %li.toggle-topbar.menu-icon
         %a{:href => "#"}
@@ -17,7 +17,10 @@
           %a{:href => "#"} Right Button Dropdown
           %ul.dropdown
             %li
-              = link_to 'Logout', destroy_user_session_path, method: :delete
+              - if user_signed_in?
+                = link_to 'Logout', destroy_user_session_path, method: :delete
+              - else
+                %a{:href => '#', :data => {'reveal-id' => 'signin'}} Anmelden
             %li
               %a{:href => "#"} Second link in dropdown
       / Left Nav Section

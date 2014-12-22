@@ -1,0 +1,31 @@
+.row
+	.small-6.small-centered.columns
+		%h6.text-center
+			oder
+			%a{:href => '#', :data => {'reveal-id' => 'signin'}} Anmelden
+
+#signin.reveal-modal.small{:data => {:reveal => true}}
+	%a.close-reveal-modal &#215;
+
+	.row
+		.small-12.columns
+			%h2 Anmelden
+
+	= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+
+		.row
+			.form-inputs
+				.small-12.columns
+					= f.input :email, :label => 'Email', :required => false, :autofocus => true
+		.row
+			.small-12.columns
+				= f.input :password, :label => 'Passwort', :required => false
+		.row
+			.small-6.columns
+				= f.input :remember_me, :label => 'Angemeldet bleiben', :as => :boolean if devise_mapping.rememberable?
+
+			.form-actions
+				.small-6.columns
+					= f.button :submit, "Anmelden", :class => :right
+
+

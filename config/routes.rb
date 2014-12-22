@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'site#index'
 
   #DELETE
   get 'things/debug'
@@ -20,7 +21,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'site#index'
+  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
