@@ -2,14 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.evenspaced {
-  padding: 5px 0px;
-}
-
-.thing {
-  height: 200px;
-  display: block;
-  background-color: #e4e4e4;
+.nomargin {
+  margin: 0px;
 }
 
 .name {
@@ -18,6 +12,10 @@
   margin: 0px;
   font-size: 2em;
   line-height: 2.5em;
+}
+
+.name a {
+  display: block;
 }
 
 .count {

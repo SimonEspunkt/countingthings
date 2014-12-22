@@ -1,0 +1,33 @@
+.contain-to-grid
+  %nav.top-bar{"data-topbar" => "", :role => "navigation"}
+    %ul.title-area
+      %li.name
+        %h1
+          - if user_signed_in?
+            = link_to 'countingthings.io', things_path
+          - else
+            = link_to 'countingthings.io', root_path
+            
+      / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+      %li.toggle-topbar.menu-icon
+        %a{:href => "#"}
+          %span Menu
+    %section.top-bar-section
+      / Right Nav Section
+      %ul.right
+        %li.active
+          %a{:href => "#"} Right Button Active
+        %li.has-dropdown
+          %a{:href => "#"} Right Button Dropdown
+          %ul.dropdown
+            %li
+              - if user_signed_in?
+                = link_to 'Logout', destroy_user_session_path, method: :delete
+              - else
+                %a{:href => '#', :data => {'reveal-id' => 'signin'}} Anmelden
+            %li
+              %a{:href => "#"} Second link in dropdown
+      / Left Nav Section
+      %ul.left
+        %li
+          %a{:href => "#"} Left Nav Button

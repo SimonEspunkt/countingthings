@@ -6,8 +6,8 @@
   <ul class="small-block-grid-1 medium-block-grid-4 large-block-grid-4">
     <% @things.each_with_index do |thing, index| %>
       <li>
-        <div class="thing">
-          <p class="name"><%= thing.name %></p>
+        <div class="panel nomargin">
+          <p class="name"><a href="#thing<%= thing.id %>" class="detailslink"><%= thing.name %></a></p>
           <p class="count"><%= unless thing.events_count.nil? then thing.events_count else 0 end %></p>
           <div class="row">
             <div class="small-6 columns"><%= link_to 'sub', thing_event_path(thing), :class => 'sub', method: :delete %></div>
