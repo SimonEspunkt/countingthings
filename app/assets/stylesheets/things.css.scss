@@ -10,7 +10,7 @@
   text-align: center;
   display: block;
   margin: 0px;
-  font-size: 2em;
+  font-size: 1.5em;
   line-height: 2.5em;
 }
 
@@ -21,13 +21,17 @@
 .count {
   text-align: center;
   margin: 0px;
-  font-size: 2em;
+  font-size: 1.5em;
   line-height: 2.5em;
 }
 
 .sub, .add {
-  font-size: 2em;
+  font-size: 1.5em;
   line-height: 2.5em;
   text-align: center;
   display: block;
+}
+
+.details {
+  position:absolute;
 }
