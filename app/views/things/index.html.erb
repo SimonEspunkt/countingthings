@@ -7,10 +7,14 @@
     <% @things.each_with_index do |thing, index| %>
       <li>
         <div class="panel nomargin">
-          <p class="name"><a href="#thing<%= thing.id %>" class="detailslink"><%= thing.name %></a></p>
+          <p class="name">
+            <%= link_to thing.name, thing_path(thing), :class => 'detailslink' %>
+          </p>
           <p class="count"><%= unless thing.events_count.nil? then thing.events_count else 0 end %></p>
           <div class="row">
-            <div class="small-6 columns"><%= link_to 'sub', thing_event_path(thing), :class => 'sub', method: :delete %></div>
+            <div class="small-6 columns">
+              <%= link_to 'share', new_invitation_path(thing), :class => 'share', method: :post %>
+            </div>
             <div class="small-6 columns"><%= link_to 'add', thing_events_path(thing), :class => 'add', method: :post %></div>
           </div>
         </div>

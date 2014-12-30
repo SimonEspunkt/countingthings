@@ -13,6 +13,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'devise', '~> 3.1.0.rc'
 gem 'simple_form'
-gem 'foundation-rails'
+gem 'foundation-rails', '~> 5.4.5.0'
 gem 'pundit'
 gem 'haml'
