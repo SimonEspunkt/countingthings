@@ -16,6 +16,10 @@ class ThingsController < ApplicationController
   # GET /things/1
   # GET /things/1.json
   def show
+    @users = @thing.users.select('users.id, email')
+
+    #get statistics for user event tracking
+    @userevents = @thing.events.group("user_id,strftime('%Y-%m-%d', created_at)").group("user_id").count()
   end
 
   # GET /things/new
