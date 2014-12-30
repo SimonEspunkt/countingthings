@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
+//= require jquery-readyselector
+//= require Chart
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
