@@ -27,8 +27,8 @@ class ThingsController < ApplicationController
       #only respond to json requests
       @users = @thing.users.select('users.id, email')
       @userevents = @thing.events
-        .group("user_id,strftime('%Y-%m-%d', created_at)")
         .group("user_id")
+        .group("user_id,strftime('%Y-%m-%d', created_at)")
         .count()
 
       daterange = Array.new
