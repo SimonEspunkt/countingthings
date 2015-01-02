@@ -45,6 +45,8 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    email_validator (1.5.0)
+      activemodel
     erubis (2.7.0)
     execjs (2.2.2)
     foundation-rails (5.4.5.0)
@@ -137,6 +139,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise (~> 3.1.0.rc)
+  email_validator
   foundation-rails (~> 5.4.5.0)
   haml
   jbuilder (~> 2.0)

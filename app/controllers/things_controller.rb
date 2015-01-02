@@ -1,6 +1,7 @@
 class ThingsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_thing, only: [:show, :edit, :update, :destroy, :statistic]
+  rescue_from ActiveRecord::RecordInvalid, with: :invalid_record
 
   # GET /things
   # GET /things.json
@@ -8,10 +9,6 @@ class ThingsController < ApplicationController
     @things = current_user.things.all
   end
 
-  ###DELTE
-  def debug
-    render plain: Thing.all.inspect
-  end
 
   # GET /things/1
   # GET /things/1.json
@@ -175,5 +172,10 @@ class ThingsController < ApplicationController
         .group("user_id")
         .group("user_id,strftime('%Y-%m', created_at)")
         .count()
+    end
+
+    def invalid_record
+      flash[:alert] = "Bitte überprüfe deine Eingaben."
+      redirect_to(request.referrer || things_path)
     end
 end

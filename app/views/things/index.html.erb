@@ -13,7 +13,7 @@
           <p class="count"><%= unless thing.events_count.nil? then thing.events_count else 0 end %></p>
           <div class="row">
             <div class="small-6 columns">
-              <%= link_to 'share', new_invitation_path(thing), :class => 'share', method: :post %>
+              <%= link_to 'share', new_invitation_path(thing), :class => 'share', method: :get %>
             </div>
             <div class="small-6 columns"><%= link_to 'add', thing_events_path(thing), :class => 'add', method: :post %></div>
           </div>

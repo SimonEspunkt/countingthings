@@ -2,19 +2,18 @@ Rails.application.routes.draw do
   root 'site#index'
 
   #DELETE
-  get 'things/debug'
   get 'invitations/debug' => 'invitations#index'
 
-  post 'things/:id/invite/' => 'invitations#new', as: :new_invitation
-  post 'things/:id/invite/create' => 'invitations#create'
-  get  'vi/:code' => 'invitations#validateInvitation', as: :validate_invitation
-  delete 'things/:thing_id/events/destroy' => 'events#destroy', as: :thing_event
+  get 'things/:id/invite/' => 'invitations#new', as: :new_invitation, constraints: { id: /[0-9]+/, format: 'html'}
+  post 'things/:id/invite/create' => 'invitations#create', constraints: { id: /[0-9]+/, format: 'html'}
+  get  'vi/:code' => 'invitations#validateInvitation', as: :validate_invitation, constraints: { code: /[A-Za-z0-9\+\/\=]+/, format: 'html'}
+  delete 'things/:thing_id/events/destroy' => 'events#destroy', as: :thing_event, constraints: { id: /[0-9]+/, format: 'html'}
   
 
-  resources :things do
-    resources :events, only: [:create]
+  resources :things, constraints: { id: /[0-9]+/, format: 'html'} do
+    resources :events, only: [:create], constraints: { id: /[0-9]+/, format: 'json'}
     member do
-      get 'statistic'
+      get 'statistic', constraints: { id: /[0-9]+/, format: 'json'}
     end
   end
 

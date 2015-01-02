@@ -1,4 +1,5 @@
 class InvitationsController < ApplicationController
+  rescue_from ActionController::ParameterMissing, with: :missing_value
 
   #TODO: DELETE THIS METHOD!!!
   def index
@@ -11,7 +12,6 @@ class InvitationsController < ApplicationController
   end
 
   # POST /things/:id/invitation/create
-
   def create
     if invitation_to_self?
       flash[:alert] = "Invitation to self is not allowed."
@@ -34,6 +34,9 @@ class InvitationsController < ApplicationController
       if @invitation.save
         flash[:notice] = "Invitation to #{@invitation.recipient_email} send."
         redirect_to things_path
+      else
+        flash[:alert] = "Einladung konnte nicht gesendet werden, keine gültige Email-Adresse."
+        redirect_to(request.referrer || things_path)
       end
     else
       resend_unconfirmed_invitation
@@ -120,4 +123,8 @@ class InvitationsController < ApplicationController
       end
     end
 
+    def missing_value
+      flash[:alert] = "Bitte gib eine gültige Email-Adresse ein"
+      redirect_to(request.referrer || things_path)
+    end
 end
