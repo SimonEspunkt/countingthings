@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require jquery-readyselector
 //= require Chart
+//= require moment
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

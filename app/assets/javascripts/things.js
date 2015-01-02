@@ -33,4 +33,46 @@ $(".things.show").ready(function() {
 
   var ctx = $("#myChart").get(0).getContext("2d")
   var myNewChart = new Chart(ctx).Line(data, options)
+
+
+  
+
+
+
+  $.ajax({
+    type: "GET",
+    url: url(),
+    success: function(response) {
+      prepareStats(response);
+    }
+  });
+
 });
+
+
+function arrayOfDaysFromNow(amountOfDays) {
+  var resultArr = [];
+  for (var i = 0; i <= amountOfDays-1; i++) {
+    resultArr[i] = moment().subtract(i, 'days');
+  }
+
+  return resultArr;
+}
+
+function url() {
+  var prefix = $('#thingname').attr('data-thing-id');
+  var url = 'statistic.json';
+  return prefix + '/' + url;
+}
+
+function prepareStats(data) {
+  console.log(data);
+  var amountOfDays = 30;
+  var daysArray = arrayOfDaysFromNow(amountOfDays);
+
+  for (var i = 0; i < amountOfDays; i++) {
+    
+  }
+
+}
+

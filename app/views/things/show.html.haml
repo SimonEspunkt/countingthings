@@ -1,12 +1,16 @@
 .row
-	.small-12.columns
-		%p= @thing.inspect
-		%p= @users.inspect
-		%p= @userevents.inspect
-	
+  .small-12.columns
+    %p= @thing.inspect
+    %p= @users.inspect
+    %p= @userevents.inspect
+
+.row
+  .small-12.columns
+    %h2#thingname{:data => {:thing_id => @thing.id}}= @thing.name
+  
 
 
 .row
-	.small-6.small-centered.columns
-		%canvas#myChart
+  .small-6.small-centered.columns
+    %canvas#myChart
 

@@ -3,10 +3,7 @@
     %ul.title-area
       %li.name
         %h1
-          - if user_signed_in?
-            = link_to 'countingthings.io', things_path
-          - else
-            = link_to 'countingthings.io', root_path
+          = link_to 'countingthings.io', root_path
     %section.top-bar-section
       / Right Nav Section
       %ul.right

@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
   resources :things do
     resources :events, only: [:create]
+    member do
+      get 'statistic'
+    end
   end
 
 

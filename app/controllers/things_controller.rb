@@ -1,6 +1,6 @@
 class ThingsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_thing, only: [:show, :edit, :update, :destroy]
+  before_action :set_thing, only: [:show, :edit, :update, :destroy, :statistic]
 
   # GET /things
   # GET /things.json
@@ -20,6 +20,27 @@ class ThingsController < ApplicationController
 
     #get statistics for user event tracking
     @userevents = @thing.events.group("user_id,strftime('%Y-%m-%d', created_at)").group("user_id").count()
+  end
+
+  def statistic
+    if params[:format] == 'json'
+      #only respond to json requests
+      @users = @thing.users.select('users.id, email')
+      @userevents = @thing.events
+        .group("user_id,strftime('%Y-%m-%d', created_at)")
+        .group("user_id")
+        .count()
+
+      daterange = Array.new
+      @userevents.each_key do |key|
+        daterange.push(key[0])
+      end
+      @daterange = daterange.minmax
+
+    else
+      #if request is not json
+      redirect_to thing_path
+    end
   end
 
   # GET /things/new
