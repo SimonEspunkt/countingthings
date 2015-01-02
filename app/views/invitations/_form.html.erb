@@ -1,4 +1,4 @@
 <%= simple_form_for @invitation, :url => url_for(controller: 'invitations', action: 'create') do |f| %>
-  <%= f.input :recipient_email %>
-  <%= f.button :submit %>
+  <%= f.input :recipient_email, label: 'Email-Adresse des Empfängers' %>
+  <%= f.button :submit, value: 'Einladung verschicken' %>
 <% end %>

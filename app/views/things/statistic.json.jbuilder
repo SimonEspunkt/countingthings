@@ -1,3 +1,3 @@
 json.users @users
 json.userevents @userevents
-json.daterange @daterange
+json.datarange @datarange

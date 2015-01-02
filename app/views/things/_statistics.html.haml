@@ -1,0 +1,11 @@
+.large-4.columns
+  %dl.clearfix
+    %dt Ding erstellt:
+    %dd= @thing.created_at.strftime('%d.%m.%Y')
+    %dt Zählerstand insgesamt:
+    %dd= @thing.events_count
+    %dt Zählen mit dir zusammen:
+    - @users.each do |user|
+      %span.legend.left
+      %dd.username
+        = user.email

@@ -1,16 +1,37 @@
 .row
-  .small-12.columns
-    %p= @thing.inspect
-    %p= @users.inspect
-    %p= @userevents.inspect
-
-.row
-  .small-12.columns
-    %h2#thingname{:data => {:thing_id => @thing.id}}= @thing.name
+  .large-12.columns
+    %h2#thingname{:data => {:thing_id => @thing.id}}= "Dein Ding: #{@thing.name}"
+    %dl.sub-nav
+      %dt Filter:
+      %dd.active.overall
+        %a{href: '#'} Gesamt
+      %dd.yearly
+        %a{href: '#'} Jährlich
+      %dd.monthly 
+        %a{href: '#'} Letzte 12 Monate
+      %dd.daily
+        %a{href: '#'} Letzte 30 Tage
   
+.row.detailpage#overallpage
+  = render 'statistics'
+  .large-8.columns
+    %canvas#overallChart
 
+.row.detailpage.hide#yearlypage
+  = render 'statistics'
+  .large-8.columns
+    %canvas#yearlyChart
+
+.row.detailpage.hide#monthlypage
+  = render 'statistics'
+  .large-8.columns
+    %canvas#monthlyChart
+
+.row.detailpage.hide#dailypage
+  = render 'statistics'
+  .large-8.columns
+    %canvas#dailyChart
 
 .row
-  .small-8.small-centered.columns
-    %canvas#myChart
-
+  .large-12.columns
+    = link_to 'Zurück', things_path
