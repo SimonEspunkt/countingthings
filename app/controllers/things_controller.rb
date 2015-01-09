@@ -21,7 +21,7 @@ class ThingsController < ApplicationController
     @userevents = @thing.events
         .where(created_at: timerange)
         .group("user_id")
-        .group("user_id,strftime('%Y-%m-%d', created_at)")
+        .group("user_id,DATE_FORMAT(created_at, '%Y-%m-%d')")
         .count()
   end
 
@@ -129,7 +129,7 @@ class ThingsController < ApplicationController
       @userevents = @thing.events
         .where(created_at: timerange)
         .group("user_id")
-        .group("user_id,strftime('%Y-%m-%d', created_at)")
+        .group("user_id,DATE_FORMAT(created_at, %Y-%m-%d')")
         .count()
     end
 
@@ -142,7 +142,7 @@ class ThingsController < ApplicationController
     def getYearlyStatistics
       @userevents = @thing.events
         .group("user_id")
-        .group("user_id,strftime('%Y', created_at)")
+        .group("user_id,DATE_FORMAT(created_at, '%Y')")
         .count()
 
       #compute all years to include to cover all found events
@@ -170,7 +170,7 @@ class ThingsController < ApplicationController
       @userevents = @thing.events
         .where(created_at: timerange)
         .group("user_id")
-        .group("user_id,strftime('%Y-%m', created_at)")
+        .group("user_id,DATE_FORMAT(created_at, '%Y-%m')")
         .count()
     end
 
