@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get 'things/:id/invite/' => 'invitations#new', as: :new_invitation, constraints: { id: /[0-9]+/, format: 'html'}
   post 'things/:id/invite/create' => 'invitations#create', constraints: { id: /[0-9]+/, format: 'html'}
-  get  'vi/:code' => 'invitations#validateInvitation', as: :validate_invitation, constraints: { code: /[A-Za-z0-9\+\/\=\-]+/, format: 'html'}
+  get  'vi/:code' => 'invitations#validateInvitation', as: :validate_invitation, constraints: { code: /[A-Za-z0-9\+\/\=\-\_]+/, format: 'html'}
   delete 'things/:thing_id/events/destroy' => 'events#destroy', as: :thing_event, constraints: { id: /[0-9]+/, format: 'html'}
   
 
