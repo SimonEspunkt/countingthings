@@ -1,6 +1,6 @@
 <h2>All Invitations</h2>
 <ul>
 <% @invitations.each do |i| %>
-	<li>for: <%= i.recipient_email %> - <a href="http://localhost:3000/vi/<%= i.confirmation_code %>" ><%= i.confirmation_code %></a> - Accepted: <%= i.accepted %></li>
+	<li>for: <%= i.recipient_email %> - <a href="http://zerosim.eltanin.uberspace.de/vi/<%= i.confirmation_code %>" ><%= i.confirmation_code %></a> - Accepted: <%= i.accepted %></li>
 <% end %>
 </ul>
