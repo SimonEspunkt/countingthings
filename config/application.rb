@@ -22,3 +22,15 @@ module Ct
     # config.i18n.default_locale = :de
   end
 end
+
+
+ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.smtp_settings = {
+  address:              'eltanin.uberspace.de',
+  port:                 587,
+  domain:               'eltanin.uberspace.de',
+  user_name:            'zerosim-info',
+  password:             ENV['EMAILPW'],
+  authentication:       'login',
+  enable_starttls_auto: true
+}
