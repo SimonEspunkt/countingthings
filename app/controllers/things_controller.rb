@@ -129,7 +129,7 @@ class ThingsController < ApplicationController
       @userevents = @thing.events
         .where(created_at: timerange)
         .group("user_id")
-        .group("user_id,DATE_FORMAT(created_at, %Y-%m-%d')")
+        .group("user_id,DATE_FORMAT(created_at, '%Y-%m-%d')")
         .count()
     end
 
