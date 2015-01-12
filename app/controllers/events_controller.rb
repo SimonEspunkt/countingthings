@@ -28,8 +28,9 @@ class EventsController < ApplicationController
 
   	respond_to do |format|
       if @thing.events << @event
+        set_thing
         format.html { redirect_to things_path, notice: 'Event successfully logged.' }
-        format.json { render :show, status: :created, location: @thing }
+        format.json { render :show, status: :created}
       else
         format.html { render :new }
         format.json { render json: @thing.errors, status: :unprocessable_entity }
