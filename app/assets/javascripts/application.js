@@ -18,5 +18,6 @@
 //= require Chart
 //= require moment
 //= require_tree .
+//= require things/things.show.inc
 
 $(function(){ $(document).foundation(); });

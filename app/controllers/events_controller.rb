@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 	before_filter :authenticate_user!
-	before_filter :set_thing, only: [:create, :destroy]
+	before_filter :set_thing, only: [:create, :destroy, :show]
 
 
 	# DELETE /things/2/events
@@ -35,6 +35,9 @@ class EventsController < ApplicationController
         format.json { render json: @thing.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def show
   end
 
   private
