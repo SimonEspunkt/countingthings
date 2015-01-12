@@ -29,8 +29,8 @@ ActionMailer::Base.smtp_settings = {
   address:              'eltanin.uberspace.de',
   port:                 587,
   domain:               'eltanin.uberspace.de',
-  user_name:            'zerosim-info',
-  password:             ENV['EMAILPW'],
+  user_name:            ENV['EMAIL_USERNAME'],
+  password:             ENV['EMAIL_PW'],
   authentication:       'login',
   enable_starttls_auto: true
 }
