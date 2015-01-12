@@ -127,6 +127,9 @@ class InvitationsController < ApplicationController
 
       #update existing invitation with new confirmation_code (and send email again)
       if @invitation.update(confirmation_code: genConfcode)
+        #send email
+        sendInvitation(@invitation)
+        
         flash[:notice] = "Invitation to #{@invitation.recipient_email} send."
         redirect_to things_path
       end
