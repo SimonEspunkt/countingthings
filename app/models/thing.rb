@@ -4,5 +4,5 @@ class Thing < ActiveRecord::Base
   has_many :events
   has_many :invitations
 
-  validates :name, length: { in: 1..255 }, presence: true
+  validates :name, length: { in: 1..25 }, presence: true
 end

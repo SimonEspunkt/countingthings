@@ -5,26 +5,25 @@
 <div class="row">
   <ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-4">
     <% @things.each_with_index do |thing, index| %>
-      <li>
+      <li class="card">
         <div class="panel nomargin">
           <p class="name">
             <%= thing.name.upcase %>
             <!--<%= link_to thing.name, thing_path(thing), :class => 'detailslink' %>-->
           </p>
-          <p class="subsection">Zählerstand:</p>
+          <p class="subsection">Zählerstand</p>
           <p class="count"><%= unless thing.events_count.nil? then thing.events_count else 0 end %></p>
           <p class="subsection">Mitglieder</p>
-          <p class="userscount"><%= @userscount[thing.id] %></p>
+          <p class="userscount"><%= thing.userobjects_count %></p>
           <p class="subsection">Gründer</p>
           <p class="owner"><%= @owner[thing.id].email %></p>
         </div>
-        <div class="pushup cardlinks">
-        <div class="row">
-          <div class="small-6 columns">
-            <%= link_to 'share', new_invitation_path(thing), :class => 'share leftlink', method: :get %>
-          </div>
-          <div class="small-6 columns"><%= link_to 'add', thing_events_path(thing), :class => 'add rightlink', method: :post %></div>
-        </div>
+        <div class="pushup">
+           <ul class="cardlinks inline-list no-bullet">
+            <li><%= link_to 'share', new_invitation_path(thing), :class => 'share leftlink', method: :get %></li>
+            <li><%= link_to 'details', thing_path(thing), :class => 'detailslink middlelink', method: :get %></li>
+            <li><%= link_to 'add', thing_events_path(thing), :class => 'add rightlink', method: :post %></li>
+          </ul>
         </div>
       </li>
     <% end %>

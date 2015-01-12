@@ -30,6 +30,15 @@ $(".things.show").ready(function() {
 
 //javascript file for controller action things#index
 $(".things.index").ready(function() {
+
+  //color all cardlinks border-tops
+
+  $('.pushup').each(function() {
+    var owner = $(this).closest('li.card').find('.owner').html();
+    $(this).css('border-color', getColorFromUsername(owner, 1));
+  });
+
+
   //replace all links with paragraphs
   $('.add').each(function() {
     var href = $(this).attr('href');
@@ -53,7 +62,7 @@ $(".things.index").ready(function() {
       type: "POST",
       url: url,
       success: function(response) {
-        $(elem.currentTarget).closest('li').find('.count').html(response.events_count);
+        $(elem.currentTarget).closest('li.card').find('.count').html(response.events_count);
       },
       complete: function() {
         $(elem.currentTarget).on('click',addEvent);
