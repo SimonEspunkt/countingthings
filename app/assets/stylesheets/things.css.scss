@@ -2,8 +2,74 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$pushup: 4em;
+
 .nomargin {
   margin: 0px;
+}
+
+.panel {
+  min-height:25em;
+  padding-bottom: $pushup;
+
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background: rgba(255,255,255,1);
+  background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(238,238,238,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(100%, rgba(238,238,238,1)));
+  background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(238,238,238,1) 100%);
+  background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(238,238,238,1) 100%);
+  background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(238,238,238,1) 100%);
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(238,238,238,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eeeeee', GradientType=0 );
+
+  border-bottom: 1px solid #fff;
+  border-right: 1px solid #fff;
+  border-top: 1px solid #e4e4e4;
+  border-left: 1px solid #e4e4e4;
+
+  -webkit-box-shadow: 0px 3px 5px 1px rgba(23,23,23,1);
+  -moz-box-shadow: 0px 3px 5px 1px rgba(23,23,23,1);
+  box-shadow: 0px 3px 5px 1px rgba(23,23,23,1);
+}
+
+.pushup {
+  margin-top: -$pushup;
+  border-top:1px solid #e4e4e4;
+}
+
+.cardlinks {
+
+  .leftlink:hover {
+    background: rgba(199,199,199,1);
+    background: -moz-linear-gradient(top, rgba(199,199,199,1) 0%, rgba(237,237,237,1) 4%, rgba(255,255,255,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(199,199,199,1)), color-stop(4%, rgba(237,237,237,1)), color-stop(100%, rgba(255,255,255,1)));
+    background: -webkit-linear-gradient(top, rgba(199,199,199,1) 0%, rgba(237,237,237,1) 4%, rgba(255,255,255,1) 100%);
+    background: -o-linear-gradient(top, rgba(199,199,199,1) 0%, rgba(237,237,237,1) 4%, rgba(255,255,255,1) 100%);
+    background: -ms-linear-gradient(top, rgba(199,199,199,1) 0%, rgba(237,237,237,1) 4%, rgba(255,255,255,1) 100%);
+    background: linear-gradient(to bottom, rgba(199,199,199,1) 0%, rgba(237,237,237,1) 4%, rgba(255,255,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c7c7c7', endColorstr='#ffffff', GradientType=0 );
+    color: #000;
+    -webkit-border-bottom-left-radius: 10px;
+    -moz-border-bottom-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+
+  .rightlink:hover {
+    background: rgba(199,199,199,1);
+    background: -moz-linear-gradient(top, rgba(199,199,199,1) 0%, rgba(237,237,237,1) 4%, rgba(255,255,255,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(199,199,199,1)), color-stop(4%, rgba(237,237,237,1)), color-stop(100%, rgba(255,255,255,1)));
+    background: -webkit-linear-gradient(top, rgba(199,199,199,1) 0%, rgba(237,237,237,1) 4%, rgba(255,255,255,1) 100%);
+    background: -o-linear-gradient(top, rgba(199,199,199,1) 0%, rgba(237,237,237,1) 4%, rgba(255,255,255,1) 100%);
+    background: -ms-linear-gradient(top, rgba(199,199,199,1) 0%, rgba(237,237,237,1) 4%, rgba(255,255,255,1) 100%);
+    background: linear-gradient(to bottom, rgba(199,199,199,1) 0%, rgba(237,237,237,1) 4%, rgba(255,255,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c7c7c7', endColorstr='#ffffff', GradientType=0 );
+    color: #000;
+    -webkit-border-bottom-right-radius: 10px;
+    -moz-border-bottom-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
 }
 
 .name {
@@ -14,8 +80,9 @@
   line-height: 2.5em;
 }
 
-.name a {
-  display: block;
+.subsection {
+  text-align: center;
+  margin: 5em 0em 0em 0em;
 }
 
 .count {
@@ -31,6 +98,7 @@
   text-align: center;
   display: block;
   cursor: pointer;
+  margin-bottom: 0px;
 }
 
 .details {

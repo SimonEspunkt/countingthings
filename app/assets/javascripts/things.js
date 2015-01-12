@@ -31,15 +31,14 @@ $(".things.show").ready(function() {
 //javascript file for controller action things#index
 $(".things.index").ready(function() {
   //replace all links with paragraphs
-  $('a.add').each(function() {
+  $('.add').each(function() {
     var href = $(this).attr('href');
-    var inner = $(this).html();
-    var newLink = '<p class="add" data-href="' + href + '">' + inner + '</p>';
-    $(this).replaceWith(newLink);
+    $(this).attr('data-href', href);
+    $(this).attr('href', 'javascript:;');
   });
 
   //bind click-event to paragraphs and unbind after paragraph is clicked
-  $('p.add').each(function() {
+  $('a.add').each(function() {
     $(this).on('click', addEvent);
     $(this).click(function(elem) {
       $(this).off('click', addEvent);
@@ -54,8 +53,7 @@ $(".things.index").ready(function() {
       type: "POST",
       url: url,
       success: function(response) {
-        $(elem.currentTarget).closest('.panel').find('.count').html(response.events_count);
-        console.log(response);
+        $(elem.currentTarget).closest('li').find('.count').html(response.events_count);
       },
       complete: function() {
         $(elem.currentTarget).on('click',addEvent);
