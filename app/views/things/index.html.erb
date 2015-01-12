@@ -7,12 +7,16 @@
     <% @things.each_with_index do |thing, index| %>
       <li>
         <div class="panel nomargin">
-          <h3 class="name">
+          <p class="name">
             <%= thing.name.upcase %>
             <!--<%= link_to thing.name, thing_path(thing), :class => 'detailslink' %>-->
-          </h3>
+          </p>
           <p class="subsection">Zählerstand:</p>
           <p class="count"><%= unless thing.events_count.nil? then thing.events_count else 0 end %></p>
+          <p class="subsection">Mitglieder</p>
+          <p class="userscount"><%= @userscount[thing.id] %></p>
+          <p class="subsection">Gründer</p>
+          <p class="owner"><%= @owner[thing.id].email %></p>
         </div>
         <div class="pushup cardlinks">
         <div class="row">

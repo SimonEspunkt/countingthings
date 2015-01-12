@@ -7,6 +7,18 @@ class ThingsController < ApplicationController
   # GET /things.json
   def index
     @things = current_user.things.all
+
+    @owner = Hash.new
+    @things.each do |thing|
+      @owner[thing.id] = User.select(:id, :email).where(id: thing.owner_id).first
+    end
+
+    @userscount = Hash.new
+    @things.each do |thing|
+      @userscount[thing.id] = Userobject.where(thing_id: thing.id).count()
+    end
+
+    render plain: @userscount.inspect
   end
 
 

@@ -72,25 +72,28 @@ $pushup: 4em;
   }
 }
 
-.name {
+.name, .count {
   text-align: center;
   display: block;
-  margin: 0px;
-  font-size: 1.5em;
-  line-height: 2.5em;
-}
-
-.subsection {
-  text-align: center;
-  margin: 5em 0em 0em 0em;
+  margin: 0em 0em 2em 0em;
+  font-size: 2em;
+  line-height: 1.2em;
 }
 
 .count {
-  text-align: center;
-  margin: 0px;
-  font-size: 1.5em;
-  line-height: 2.5em;
+  margin-bottom: 3em;
 }
+
+
+.subsection {
+  text-align: center;
+  margin: 0em;
+}
+
+.owner {
+  text-align: center;
+}
+
 
 .share, .add {
   font-size: 1.5em;
