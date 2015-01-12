@@ -32,6 +32,10 @@ class InvitationsController < ApplicationController
                       confirmation_code: genConfcode)
 
       if @invitation.save
+
+        #sending email
+        sendInvitation(@invitation)
+
         flash[:notice] = "Invitation to #{@invitation.recipient_email} send."
         redirect_to things_path
       else
@@ -95,6 +99,11 @@ class InvitationsController < ApplicationController
       else
         false
       end
+    end
+
+    def sendInvitation(invitation)
+      thing = Thing.find(invitation.thing_id)
+      InvitationsMailer.invitation(current_user.email, invitation_params, validate_invitation_path + '/' + invitation.confirmation_code, thing).deliver
     end
 
     def unconfirmed_invitation_found?
