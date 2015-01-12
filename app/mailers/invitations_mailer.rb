@@ -6,6 +6,6 @@ class InvitationsMailer < ActionMailer::Base
     @user = user.email
     @link = link
     @thing = thing
-    mail(to: recipient, subject: '#{user.name} möchte mit dir Dinge zählen! (countingthings.io)' )
+    mail(to: recipient, subject: user.email + ' möchte mit dir Dinge zählen! (countingthings.io)' )
   end
 end
