@@ -1,10 +1,11 @@
 class InvitationsController < ApplicationController
+  before_filter :authenticate_user!
   rescue_from ActionController::ParameterMissing, with: :missing_value
 
   #TODO: DELETE THIS METHOD!!!
-  def index
-    @invitations = Invitation.all
-  end 
+  #def index
+  #  @invitations = Invitation.all
+  #end 
 
 
   def new

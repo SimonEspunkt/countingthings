@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'site#index'
 
   #DELETE
-  get 'invitations/debug' => 'invitations#index'
+  #get 'invitations/debug' => 'invitations#index'
 
   get 'things/:id/invite/' => 'invitations#new', as: :new_invitation, constraints: { id: /[0-9]+/, format: 'html'}
   post 'things/:id/invite/create' => 'invitations#create', constraints: { id: /[0-9]+/, format: 'html'}
