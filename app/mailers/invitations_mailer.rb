@@ -3,7 +3,7 @@ class InvitationsMailer < ActionMailer::Base
 
   def invitation(user, recipient, link, thing)
     @recipient = recipient
-    @user = user
+    @user = user.email
     @link = link
     @thing = thing
     mail(to: recipient, subject: '#{user.name} möchte mit dir Dinge zählen! (countingthings.io)' )

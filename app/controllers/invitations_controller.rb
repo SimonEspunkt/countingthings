@@ -103,7 +103,7 @@ class InvitationsController < ApplicationController
 
     def sendInvitation(invitation)
       thing = Thing.find(invitation.thing_id)
-      InvitationsMailer.invitation(current_user.email, invitation_params, 'http://zerosim.eltanin.uberspace.de/vi/'+ invitation.confirmation_code, thing).deliver
+      InvitationsMailer.invitation(current_user, invitation_params, 'http://zerosim.eltanin.uberspace.de/vi/'+ invitation.confirmation_code, thing).deliver
     end
 
     def unconfirmed_invitation_found?
