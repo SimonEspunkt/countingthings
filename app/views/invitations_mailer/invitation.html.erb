@@ -4,14 +4,14 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Hallo <%= @recipient %></h1>
+    <p>Hallo <%= @recipient %>,<br /><br /></p>
     <p>
-      <%= @user %> will, dass du mit ihm <%= @thing.name %> zählst.
+      <%= @user %> will, dass du mit ihm <strong><%= @thing.name %></strong> zählst.
     </p>
     <p>
-      Klicke auf den Link um ihm dabei zu helfen!<br />
+      Klicke auf den folgenden Link um ihm dabei zu helfen!<br />
       <a href="<%= @link %>"><%= @link %></a>
     </p>
-    <p>oder besuche einfach <%= link_to 'zerosim.eltanin.uberspace.de', root_path %>, um dich über countingthings zu informieren!</p>
+    <p>oder besuche einfach <a href="zerosim.eltanin.uberspace.de">zerosim.eltanin.uberspace.de</a><br /> um dich über countingthings zu informieren!</p>
   </body>
 </html>
