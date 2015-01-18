@@ -3,13 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 $pushup: 4em;
+$cardminheight: 28em;
 
 .nomargin {
   margin: 0px;
 }
 
 .panel {
-  min-height:28em;
+  min-height: $cardminheight;
   padding-bottom: $pushup;
 
   -webkit-border-radius: 10px;
@@ -135,6 +136,25 @@ $pushup: 4em;
   display: block;
   cursor: pointer;
   margin-bottom: 0px;
+}
+
+.addnewthing {
+  line-height: 3.7em;
+  text-align: center;
+  font-size: 5em;
+}
+
+.addnewthing a {
+  display: block;
+}
+
+.addnewthing a:hover {
+  background-color: #fff;
+  color: #333333
+}
+
+.addnewthing a:visited {
+  color: #333333
 }
 
 .details {

@@ -12,6 +12,11 @@ class ThingsController < ApplicationController
     @things.each do |thing|
       @owner[thing.id] = User.select(:id, :email).where(id: thing.owner_id).first
     end
+
+    @usercount = Hash.new
+    @things.each do |thing|
+      @usercount[thing.id] = thing.events.where(user_id: current_user.id).group('user_id').count().flatten[1]
+    end
   end
 
 
@@ -19,15 +24,6 @@ class ThingsController < ApplicationController
   # GET /things/1.json
   def show
     @users = @thing.users.select('users.id, email')
-
-    #get statistics for user event tracking
-    numberOfDays = 30
-    timerange = (Time.now - numberOfDays.to_i.days)..Time.now
-    @userevents = @thing.events
-        .where(created_at: timerange)
-        .group("user_id")
-        .group("user_id,DATE_FORMAT(created_at, '%Y-%m-%d')")
-        .count()
   end
 
 
@@ -74,7 +70,7 @@ class ThingsController < ApplicationController
 
     respond_to do |format|
       if current_user.things << @thing
-        format.html { redirect_to things_path, notice: 'Thing was successfully created.' }
+        format.html { redirect_to things_path }
         format.json { render :show, status: :created, location: @thing }
       else
         format.html { render :new }
@@ -89,7 +85,7 @@ class ThingsController < ApplicationController
     authorize @thing
     respond_to do |format|
       if @thing.update(thing_params)
-        format.html { redirect_to things_path, notice: 'Thing was successfully updated.' }
+        format.html { redirect_to things_path }
         format.json { render :show, status: :ok, location: @thing }
       else
         format.html { render :edit }
@@ -104,7 +100,7 @@ class ThingsController < ApplicationController
     authorize @thing
     @thing.destroy
     respond_to do |format|
-      format.html { redirect_to things_url, notice: 'Thing was successfully destroyed.' }
+      format.html { redirect_to things_url }
       format.json { head :no_content }
     end
   end

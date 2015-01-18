@@ -1,5 +1,5 @@
 <div class="row">
-  <h2>Deine Sachen <%= link_to '+', new_thing_path %></h2>
+  <h2>Deine Sachen</h2>
 </div>
 
 <div class="row">
@@ -12,7 +12,9 @@
             <!--<%= link_to thing.name, thing_path(thing), :class => 'detailslink' %>-->
           </p>
           <p class="subsection">Zählerstand</p>
-          <p class="count"><%= unless thing.events_count.nil? then thing.events_count else 0 end %></p>
+          <p class="count">
+            <%= unless @usercount[thing.id].nil? then @usercount[thing.id] else 0 end %>/<%= unless thing.events_count.nil? then thing.events_count else 0 end %>
+          </p>
           <p class="subsection">Mitglieder</p>
           <p class="userscount"><%= thing.userobjects_count %></p>
           <p class="subsection">Gründer</p>
@@ -27,5 +29,11 @@
         </div>
       </li>
     <% end %>
+    <li class="card">
+        <div class="panel nomargin">
+          <p class="addnewthing"><%= link_to '+', new_thing_path %></p>
+        </div>
+      </li>
+
   </ul>
 </div>
