@@ -1,3 +1,32 @@
+//javascript file for controller action things#show
+$(".things.show").ready(function() {
+
+  config_show();
+  colorLegend();
+  displayOverallStats();
+
+  $('.sub-nav dd').click(function (evt) {
+    changeActiveClass(evt);
+  });
+
+  $('.daily').click(function (evt) {
+    displayDailyStats(15);
+  });
+
+  $('.monthly').click(function (evt) {
+    displayMonthlyStats(12);
+  });
+
+  $('.yearly').click(function (evt) {
+    displayYearlyStats();  
+  });
+
+  $('.overall').click(function (evt) {
+    displayOverallStats();
+  });
+});
+
+
 //general setup goes in here
 function config_show() {
   moment.locale('de');

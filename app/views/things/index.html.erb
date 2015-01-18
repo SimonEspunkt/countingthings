@@ -9,11 +9,10 @@
         <div class="panel nomargin">
           <p class="name">
             <%= thing.name.upcase %>
-            <!--<%= link_to thing.name, thing_path(thing), :class => 'detailslink' %>-->
           </p>
           <p class="subsection">Zählerstand</p>
           <p class="count">
-            <%= unless @usercount[thing.id].nil? then @usercount[thing.id] else 0 end %>/<%= unless thing.events_count.nil? then thing.events_count else 0 end %>
+            <%= unless @usercount[thing.id].nil? then @usercount[thing.id] else 0 end %>
           </p>
           <p class="subsection">Mitglieder</p>
           <p class="userscount"><%= thing.userobjects_count %></p>
@@ -30,10 +29,9 @@
       </li>
     <% end %>
     <li class="card">
-        <div class="panel nomargin">
-          <p class="addnewthing"><%= link_to '+', new_thing_path %></p>
-        </div>
-      </li>
-
+      <div class="panel nomargin">
+        <p class="addnewthing"><%= link_to '+', new_thing_path %></p>
+      </div>
+    </li>
   </ul>
 </div>

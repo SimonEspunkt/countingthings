@@ -44,6 +44,7 @@ class EventsController < ApplicationController
   private
   	def set_thing
   		@thing = current_user.things.find(params[:thing_id])
+      @events_count = @thing.events.where(user_id: current_user.id).count()
   	end
 
 end

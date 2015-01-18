@@ -19,5 +19,6 @@
 //= require moment
 //= require_tree .
 //= require things/things.show.inc
+//= require things/things.index.inc
 
 $(function(){ $(document).foundation(); });
