@@ -452,9 +452,9 @@ function getBaseColorFromUsername(username) {
   var numberOfParts = 3
   var parts = splitStringInParts(username, numberOfParts);
 
-  colorArr[0] = (210 - (255 % (getNonVowelCount(parts[0])) * 30));
-  colorArr[1] = (210 - (255 % (getNonVowelCount(parts[1])) * 30));
-  colorArr[2] = (175 - (255 % (getNonVowelCount(parts[2])) * 30));
+  colorArr[0] = (175 - (255 % (getNonVowelCount(parts[0])) * 30));
+  colorArr[1] = (210 - (255 % (getNonVowelCount(parts[1])+1) * 30));
+  colorArr[2] = (210 - (255 % (getNonVowelCount(parts[2])) * 30));
 
   return colorArr;
 }
