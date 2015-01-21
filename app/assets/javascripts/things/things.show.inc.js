@@ -451,9 +451,11 @@ function getBaseColorFromUsername(username) {
   var colorArr = [];
   var numberOfParts = 3
   var parts = splitStringInParts(username, numberOfParts);
-  for (i = 0; i < numberOfParts; i++) {
-    colorArr[i] = (210 - (255 % (getNonVowelCount(parts[i])) * 30));
-  }
+
+  colorArr[0] = (150 - (255 % (getNonVowelCount(parts[0])) * 20));
+  colorArr[1] = (210 - (255 % (getNonVowelCount(parts[1])) * 15));
+  colorArr[2] = (175 - (255 % (getNonVowelCount(parts[2])) * 30));
+
   return colorArr;
 }
 
